@@ -1,0 +1,570 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f7f7f7;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: white;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+}
+
+.nav-links a:hover {
+    color: #ff4d4d;
+}
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: white;
+    width: 50%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -50%;
+    padding: 30px;
+    transition: 0.4s;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+}
+
+.mobile-menu a {
+    text-decoration: none;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 80vh;
+}
+
+.slider img {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1.5s;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.hero-text {
+    position: absolute;
+    bottom: 80px;
+    left: 50px;
+    color: white;
+    text-shadow: 2px 2px 8px black;
+}
+
+/* SECTIONS */
+.section {
+    padding: 60px 40px;
+}
+
+.title {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card .btn {
+    display: inline-block;
+    margin: 15px;
+    padding: 10px 15px;
+    text-decoration: none;
+    background: #224be3;
+    color: white;
+    border-radius: 8px;
+}
+
+/* BANNER */
+.banner {
+    padding: 60px;
+    text-align: center;
+    background: #224be3;
+    color: white;
+    font-size: 28px;
+}
+
+/* ABOUT BOX */
+.about-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    font-size: 18px;
+    line-height: 1.8;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: white;
+}
+
+/* RESPONSIVE MOBILE */
+@media(max-width: 850px) {
+    .nav-links {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+    .mobile-menu {
+        display: flex;
+    }
+}
+
+/* IMPORT HANDWRITING FONT */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+/* ABOUT SECTION */
+.about {
+    padding: 60px 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* BEAUTIFUL JOINED HANDWRITING TITLE */
+.about-heading {
+    font-family: 'Great Vibes', cursive;
+    font-size: 55px;
+    font-weight: normal;
+    color: #222;
+    letter-spacing: 2px;
+}
+
+/* ABOUT BOX */
+.about-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    font-size: 18px;
+    line-height: 1.8;
+    width: 70%;
+    max-width: 800px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    border: 3px solid transparent;
+    transition: all .3s ease-in-out;
+}
+
+/* RED BORDER ON HOVER/TOUCH */
+.about-box:hover {
+    border: 3px solid red;
+    box-shadow: 0px 6px 20px rgba(255, 0, 0, 0.3);
+}
+
+
+/* BANNER SECTION */
+.turkey-banner {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 15px;
+    margin: 60px 0;
+}
+
+/* IMAGE */
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(75%);
+}
+
+/* LEFT-SIDE TEXT */
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    transform: translateY(-50%);
+    color: white;
+    max-width: 450px;
+    animation: slideIn 1s ease forwards;
+}
+
+/* BANNER HEADLINE */
+.banner-text h1 {
+    font-size: 48px;
+    font-weight: 800;        /* BOLD */
+    margin-bottom: 10px;
+}
+
+/* SUBTEXT */
+.banner-text p {
+    font-size: 20px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* ANIMATION */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-40px, -50%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, -50%);
+    }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .banner-text {
+        left: 20px;
+    }
+    .banner-text h1 {
+        font-size: 32px;
+    }
+    .banner-text p {
+        font-size: 16px;
+    }
+    .turkey-banner {
+        height: 350px;
+    }
+}
+
+/* TESTIMONIALS SECTION */
+.testimonials {
+    padding: 70px 40px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #c70000; /* Turkish red */
+    margin-bottom: 40px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.testimonial-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    border: 2px solid transparent;
+}
+
+.testimonial-card:hover {
+    border: 2px solid #c70000;
+    transform: translateY(-6px);
+    box-shadow: 0px 6px 20px rgba(199,0,0,0.3);
+}
+
+.testimonial-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+.testimonial-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.testimonial-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.testimonial-card span {
+    font-size: 20px;
+    color: #ffcc00;
+}
+
+/* RESPONSIVE */
+@media(max-width: 600px){
+    .section-title{
+        font-size: 34px;
+    }
+}
+
+/* GALLERY SECTION */
+.gallery {
+    padding: 70px 40px;
+    text-align: center;
+}
+
+.gallery-grid {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.4s ease;
+    border: 2px solid transparent;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.07);
+    border: 2px solid #c70000; /* red border on hover */
+    box-shadow: 0px 6px 20px rgba(199,0,0,0.3);
+}
+
+
+/* WHY VISIT TURKEY */
+.why-turkey {
+    padding: 70px 40px;
+    text-align: center;
+}
+
+.why-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+.why-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.why-card:hover {
+    border: 2px solid #c70000;
+    transform: translateY(-6px);
+    box-shadow: 0px 6px 20px rgba(199,0,0,0.3);
+}
+
+.why-card img {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+.why-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #c70000;
+}
+
+.why-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+
+.turkey-flag-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  background-color: #f5f5f5;
+}
+
+.flag-container {
+  text-align: center;
+  max-width: 600px;
+}
+
+.turkish-flag {
+  width: 200px;
+  border: 3px solid #d00000;
+  border-radius: 10px;
+  transition: transform 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+
+.turkish-flag:hover {
+  transform: scale(1.1);
+  border-color: #ff4d4d;
+}
+
+.flag-text {
+  margin-top: 20px;
+  font-family: 'Dancing Script', cursive; /* Joining/cursive style */
+  font-size: 18px;
+  color: #d00000;
+}
+
+.faq-section {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.faq-section h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 32px;
+  color: #d00000;
+  margin-bottom: 30px;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 18px;
+  background-color: #f5f5f5;
+  border: 2px solid #d00000;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.3s;
+}
+
+.faq-question:hover {
+  background-color: #ffe5e5;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background-color: #fff5f5;
+  border-left: 2px solid #d00000;
+  border-right: 2px solid #d00000;
+  border-bottom: 2px solid #d00000;
+  border-radius: 0 0 8px 8px;
+  padding: 0 20px;
+}
+
+.faq-answer p {
+  margin: 10px 0;
+}
+
+.weather-widget {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.weather-widget h2 {
+  color: #d00000;
+  margin-bottom: 20px;
+}
+
+#city-input {
+  padding: 10px;
+  width: 60%;
+  border: 2px solid #d00000;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+#get-weather {
+  padding: 10px 15px;
+  border: none;
+  background-color: #d00000;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#get-weather:hover {
+  background-color: #ff4d4d;
+}
+
+.weather-info {
+  margin-top: 20px;
+  display: none; /* Hidden initially */
+}
+
+.weather-info img {
+  width: 80px;
+  height: 80px;
+}

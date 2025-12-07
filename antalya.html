@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antalya – Explore Turkey</title>
+<style>
+
+/* ---------- GLOBAL ---------- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+/* ---------- HERO SECTION ---------- */
+header {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.hero-image.active {
+  opacity: 1;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  padding: 20px 40px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 2.8rem;
+  text-shadow: 0 0 20px black;
+}
+
+/* ---------- SECTION TITLES ---------- */
+.section-title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin: 50px 0 30px;
+  color: #b30000;
+  font-weight: 700;
+}
+
+/* ---------- ABOUT ---------- */
+.about {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* ---------- FOOD SECTION ---------- */
+.food-section {
+  padding: 60px 20px;
+}
+
+.food-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.food-card {
+  width: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.food-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.food-card h3 {
+  margin: 10px 0;
+  color: #b30000;
+}
+
+.food-card:hover {
+  transform: scale(1.05);
+}
+
+/* ---------- TIMELINE ---------- */
+.history-section {
+  padding: 60px 20px;
+  background: #fff5f5;
+}
+
+.timeline {
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+  padding-left: 20px;
+  border-left: 4px solid #b30000;
+}
+
+.timeline-item {
+  margin-bottom: 40px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+
+.timeline-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+.back-home {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #b30000;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.back-home a:hover {
+  background-color: #ff1a1a;
+  transform: translateY(-3px);
+}
+
+
+
+
+.timeline-dot {
+  width: 18px;
+  height: 18px;
+  background: #b30000;
+  border-radius: 50%;
+  position: absolute;
+  left: -11px;
+  top: 5px;
+}
+
+.timeline-content {
+  background: white;
+  padding: 18px 22px;
+  border-radius: 10px;
+  border-left: 5px solid #b30000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ---------- MASONRY GRID ---------- */
+.masonry-section {
+  padding: 50px;
+  background: #fafafa;
+}
+
+.masonry-grid {
+  column-count: 3;
+  column-gap: 15px;
+}
+
+.grid-item {
+  margin-bottom: 15px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+  transition: transform 0.4s ease;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Different Sizes */
+.grid-item.small { height: 180px; }
+.grid-item.medium { height: 260px; }
+.grid-item.tall { height: 380px; }
+.grid-item.wide { height: 240px; }
+
+.grid-item:hover img {
+  transform: scale(1.1);
+}
+
+.grid-item:hover {
+  transform: translateY(-6px);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: #b30000;
+  color: #fff;
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+  font-size: 1rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .masonry-grid { column-count: 2; }
+  .food-grid { justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .masonry-grid { column-count: 1; }
+  .food-grid { flex-direction: column; align-items: center; }
+  .timeline-item { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header>
+  <img class="hero-image active" src="https://i.pinimg.com/1200x/ab/e9/d7/abe9d7c085b62a69a0c2c8334480dcb7.jpg" alt="Antalya Beach">
+  <img class="hero-image" src="https://i.pinimg.com/1200x/52/fb/74/52fb74d76d82695bd42f794753901280.jpg" alt="Old Town Antalya">
+  <img class="hero-image" src="https://i.pinimg.com/1200x/ce/56/c9/ce56c94b81ee54867ccca188c6ae837f.jpg" alt="Antalya Waterfalls">
+  <div class="hero-text">Welcome to Antalya – Turkey’s Mediterranean Paradise</div>
+</header>
+
+<!-- ABOUT -->
+<section class="about">
+  <h2 class="section-title">About Antalya</h2>
+  <p>Antalya is known for its turquoise beaches, ancient history, and vibrant coastal culture. 
+  It is one of Turkey’s most visited tourist destinations with a mix of modern and historic attractions.</p>
+</section>
+
+<!-- FOOD SECTION -->
+<section class="food-section">
+  <h2 class="section-title">Famous Foods in Antalya</h2>
+  <div class="food-grid">
+    <div class="food-card">
+      <img src="https://i.pinimg.com/1200x/f8/ee/bb/f8eebb8a23d419eb044b7766813200c2.jpg" alt="Piyaz">
+      <h3>Piyaz</h3>
+    </div>
+    <div class="food-card">
+      <img src="https://i.pinimg.com/736x/da/d8/8f/dad88f5ca09040d8ec7fd841b527debe.jpg" alt="Kaburga Dolması">
+      <h3>Kaburga Dolması</h3>
+    </div>
+    <div class="food-card">
+      <img src="https://i.pinimg.com/1200x/56/78/7e/56787ef236b38b55733ba65ed68765d1.jpg" alt="Tahini Dessert">
+      <h3>Tahini Dessert</h3>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY TIMELINE -->
+<section class="history-section">
+  <h2 class="section-title">History of Antalya</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>150 BC</h3>
+        <p>Founded by King Attalus II of Pergamon.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>133 BC</h3>
+        <p>Became part of the Roman Empire.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>1207</h3>
+        <p>Conquered by the Seljuk Turks.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>Present</h3>
+        <p>A major global tourist hotspot known for beaches and resorts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MASONRY GRID -->
+<section class="masonry-section">
+  <h2 class="section-title">Discover Antalya in Pictures</h2>
+  <div class="masonry-grid">
+    <div class="grid-item tall"><img src="https://i.pinimg.com/1200x/3a/a4/12/3aa412cbce557577c42ee7575a08cf43.jpg" alt="Cliffs"></div>
+    <div class="grid-item wide"><img src="https://i.pinimg.com/1200x/4a/a7/c9/4aa7c910afcb31c490eb8bfa1fb9e4a9.jpg" alt="Konyaalti Beach"></div>
+    <div class="grid-item small"><img src="https://i.pinimg.com/1200x/7d/ed/8f/7ded8f73bc2fcfb6d5694e4c4aa2de7b.jpg" alt="Old Town"></div>
+    <div class="grid-item medium"><img src="https://i.pinimg.com/1200x/f7/46/ff/f746ff4bc50e645d544579e9fa642d7a.jpg" alt="Harbor"></div>
+    <div class="grid-item tall"><img src="https://i.pinimg.com/1200x/52/fb/74/52fb74d76d82695bd42f794753901280.jpg" alt="Düden Waterfalls"></div>
+    <div class="grid-item wide"><img src="https://i.pinimg.com/1200x/c8/53/1c/c8531c94444290334a73251ac368a3cb.jpg" alt="Resorts"></div>
+  </div>
+</section>
+
+<!-- BACK TO HOME BUTTON -->
+<div class="back-home">
+  <a href="index.html">← Back to Home</a>
+</div>
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 Explore Turkey | Antalya Blog Page made by naimat
+</footer>
+
+<script>
+// HERO SLIDER
+const heroImages = document.querySelectorAll(".hero-image");
+let index = 0;
+setInterval(() => {
+  heroImages.forEach(img => img.classList.remove("active"));
+  heroImages[index].classList.add("active");
+  index = (index + 1) % heroImages.length;
+}, 4000);
+
+// FOOD ANIMATION
+const foodCards = document.querySelectorAll(".food-card");
+function showFood() {
+  const trigger = window.innerHeight * 0.85;
+  foodCards.forEach(card => {
+    if(card.getBoundingClientRect().top < trigger) card.style.opacity = "1"; 
+    card.style.transform = "translateY(0)";
+  });
+}
+window.addEventListener("scroll", showFood);
+showFood();
+
+// TIMELINE ANIMATION
+const timelineItems = document.querySelectorAll(".timeline-item");
+function showTimeline() {
+  const trigger = window.innerHeight * 0.85;
+  timelineItems.forEach(item => {
+    if(item.getBoundingClientRect().top < trigger) item.classList.add("show");
+  });
+}
+window.addEventListener("scroll", showTimeline);
+showTimeline();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Turkey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <h1 class="logo">Türkiye</h1>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#cities">Cities</a></li>
+        <li><a href="#food">Food</a></li>
+        <li><a href="#culture">Culture</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+        ☰
+    </div>
+</nav>
+
+<!-- SIDEBAR FOR MOBILE -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#hero">Home</a>
+    <a href="#cities">Cities</a>
+    <a href="#food">Food</a>
+    <a href="#culture">Culture</a>
+    <a href="#about">About</a>
+</div>
+
+<!-- HERO SECTION WITH 3 SLIDER IMAGES -->
+<section id="hero" class="hero">
+    <div class="slider">
+        <img src="https://i.pinimg.com/1200x/b8/90/31/b89031f1b3a95e028a38bd0c0302b867.jpg" class="slide active" alt="">
+        <img src="https://i.pinimg.com/1200x/0b/f5/70/0bf570a2a7cf1e507d36db8ded2c9abd.jpg" class="slide" alt="">
+        <img src="https://i.pinimg.com/1200x/67/46/ef/6746ef7ff5004a6436352761578d50c0.jpg" class="slide" alt="">
+    </div>
+    <div class="hero-text">
+        <h1>Explore The Beauty of Turkey</h1>
+        <p>Your journey begins here — history, culture, food, landscapes.</p>
+    </div>
+</section>
+
+<section class="why-turkey" id="why-turkey">
+    <h2 class="section-title">Why Visit Turkey?</h2>
+
+    <div class="why-grid">
+
+        <div class="why-card">
+            <img src="https://i.pinimg.com/736x/7a/1b/33/7a1b334d95b8a1a49e12a85a73a43b88.jpg" alt="History">
+            <h3>Rich History</h3>
+            <p>Turkey is home to ancient civilizations, empires, and historical wonders.</p>
+        </div>
+
+        <div class="why-card">
+            <img src="https://i.pinimg.com/1200x/35/67/97/35679753578c1aa57717aeabaf453d5b.jpg" alt="Food">
+            <h3>World-Famous Food</h3>
+            <p>From kebabs to baklava, Turkish cuisine is loved worldwide.</p>
+        </div>
+
+        <div class="why-card">
+            <img src="https://i.pinimg.com/1200x/0d/1e/a5/0d1ea53e5c9002aca842f13383b0759a.jpg" alt="Nature">
+            <h3>Stunning Nature</h3>
+            <p>Cappadocia, Pamukkale, Antalya — breathtaking natural beauty everywhere.</p>
+        </div>
+
+        <div class="why-card">
+            <img src="https://i.pinimg.com/1200x/e9/9d/62/e99d62a346614ec68f480759e4cebe82.jpg" alt="Culture">
+            <h3>Unique Culture</h3>
+            <p>A beautiful mix of east and west with warm hospitality.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CITY SECTION -->
+<section id="cities" class="section">
+    <h2 class="title">Top Cities</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="https://i.pinimg.com/736x/7a/b4/6b/7ab46bdfd5cd40da72df5c0481d0f5ea.jpg">
+           <br>
+            <h3>Istanbul</h3>
+            <a href="istanbul.html" class="btn">Explore</a>
+        </div>
+        <div class="card">
+            <img src="https://i.pinimg.com/1200x/e8/eb/83/e8eb831dbb320eb480608472c6b4be28.jpg">
+            <h3>Ankara</h3>
+            <a href="ankara.html" class="btn">Explore</a>
+        </div>
+        <div class="card">
+            <img src="https://i.pinimg.com/1200x/ab/e9/d7/abe9d7c085b62a69a0c2c8334480dcb7.jpg">
+            <h3>Antalya</h3>
+            <a href="antalya.html" class="btn">Explore</a>
+        </div>
+        <div class="card">
+            <img src="https://i.pinimg.com/736x/fd/68/bc/fd68bc513a79c10c97277e6a6ef80d6c.jpg">
+            <h3>Izmir</h3>
+            <a href="#" class="btn">Explore</a>
+        </div>
+    </div>
+</section>
+
+<!--banner-->
+<section class="turkey-banner">
+    <img src="https://i.pinimg.com/1200x/cf/4e/29/cf4e29386e8d6196bdf829c66c8f5719.jpg" alt="Beautiful Turkey" class="banner-img">
+
+    <div class="banner-text">
+        <h1>Discover the Beauty of Turkey</h1>
+        <p>Your journey begins here.</p>
+    </div>
+</section>
+
+
+
+<section class="weather-widget">
+  <h2>Weather in Your City</h2>
+  <div class="weather-container">
+    <input type="text" id="city-input" placeholder="Enter city name">
+    <button id="get-weather">Get Weather</button>
+
+    <div class="weather-info" id="weather-info">
+      <h3 id="city-name"></h3>
+      <p id="temperature"></p>
+      <p id="description"></p>
+      <img id="weather-icon" src="" alt="" />
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="turkey-flag-section">
+  <div class="flag-container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Turkish Flag" class="turkish-flag">
+    <p class="flag-text">
+      The Turkish flag was designed by the Ottoman Empire and officially adopted in 1844. 
+      Mustafa Kemal Atatürk kept this iconic design for the Republic of Turkey.
+    </p>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<!--aboutsection-->
+<section class="about" id="about">
+    <h2 class="about-heading">About Turkey</h2>
+
+    <div class="about-box">
+        Turkey (Türkiye) is a transcontinental country straddling Europe and Asia, known for its rich history, vibrant culture, and stunning landscapes. It borders eight countries and is surrounded by the Aegean, Mediterranean, and Black Seas.
+
+Historically, Turkey was home to ancient civilizations and later the Ottoman Empire. The modern Republic of Turkey was founded in 1923 by Mustafa Kemal Atatürk.
+
+Turkish culture blends Eastern and Western traditions, seen in its cuisine, music, and arts. Major attractions include Istanbul’s Hagia Sophia, Cappadocia’s fairy chimneys, and the beaches of Antalya.
+
+Turkey has a diverse economy, strong in agriculture, industry, and tourism. Turkish is the official language, and the country is secular, with a majority Muslim population.
+
+Today, Turkey is a key player in regional and global politics, offering a mix of history, culture, and natural beauty.
+
+If you want, I can also make an even snappier version for a website banner in 2–3 sentences. Do you want me to do that?
+    </div>
+</section>
+
+
+
+<section class="gallery" id="gallery">
+    <h2 class="section-title">Turkey Photo Gallery</h2>
+
+    <div class="gallery-grid">
+        <img src="https://i.pinimg.com/1200x/0b/f5/70/0bf570a2a7cf1e507d36db8ded2c9abd.jpg" alt="Turkey Image">
+        <img src="https://i.pinimg.com/1200x/8b/f9/3a/8bf93aff073307756eee61b8b3384453.jpg" alt="Turkey Image">
+        <img src="https://i.pinimg.com/1200x/84/ce/4f/84ce4fd54f3f9e81cdf8536e0b822dd9.jpg" alt="Turkey Image">
+        <img src="https://i.pinimg.com/1200x/9c/82/81/9c82813f9c3e2b9096205e9c00768794.jpg" alt="Turkey Image">
+        
+    </div>
+</section>
+
+
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  
+  <div class="faq-item">
+    <button class="faq-question">What is the capital of Turkey?</button>
+    <div class="faq-answer">
+      <p>The capital of Turkey is Ankara, while Istanbul is the largest city and cultural hub.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Who founded the Republic of Turkey?</button>
+    <div class="faq-answer">
+      <p>The Republic of Turkey was founded by Mustafa Kemal Atatürk in 1923.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">What are popular Turkish dishes?</button>
+    <div class="faq-answer">
+      <p>Popular dishes include kebabs, baklava, Turkish tea, and mezes (appetizers).</p>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- FOOD SECTION -->
+<section id="food" class="section">
+    <h2 class="title">Famous Turkish Foods</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="https://i.pinimg.com/1200x/da/b0/36/dab036d13706cbd5f1bdc872b42d39bf.jpg">
+            <h3>Kebab</h3>
+        </div>
+        <div class="card">
+            <img src="https://i.pinimg.com/1200x/e4/e0/f1/e4e0f18addf75647ad2ff521a466d734.jpg">
+            <h3>Baklava</h3>
+        </div>
+        <div class="card">
+            <img src="https://i.pinimg.com/736x/80/6c/22/806c22a0db1cc1a556beb3078a763587.jpg">
+            <h3>Doner</h3>
+        </div>
+        <div class="card">
+            <img src="https://i.pinimg.com/736x/37/9e/25/379e25cb292b473157e77426651a7b6c.jpg">
+            <h3>Pide</h3>
+        </div>
+    </div>
+</section>
+
+<!-- CULTURE SECTION -->
+<section id="culture" class="section">
+    <h2 class="title">Culture of Turkey</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="https://i.pinimg.com/736x/af/5c/b2/af5cb2491b8ce5e9f2566e24bc164303.jpg">
+            <h3>Architecture</h3>
+        </div>
+        <div class="card">
+            <img src="https://i.pinimg.com/736x/39/67/a4/3967a4bc99348fb7876624806bf2f406.jpg">
+            <h3>Traditional Dance</h3>
+        </div>
+        <div class="card">
+            <img src="https://i.pinimg.com/1200x/e1/26/c4/e126c434ad3885c4b66d02664988d1ab.jpg">
+            <h3>Grand Markets</h3>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+    <h2 class="section-title">What Visitors Say</h2>
+
+    <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+            <img src="https://i.pinimg.com/736x/7c/95/a2/7c95a26c0a13c05b0d8e06b0f5f68cfb.jpg" alt="reviewer">
+            <h3>Maria – Spain</h3>
+            <p>"Turkey is magical! Istanbul felt like a dream. The food and culture were unbelievable."</p>
+            <span>★★★★★</span>
+        </div>
+
+        <div class="testimonial-card">
+            <img src="https://i.pinimg.com/736x/d7/0d/91/d70d91827d0e76c4ddd0619e19e54b24.jpg" alt="reviewer">
+            <h3>Ali – Pakistan</h3>
+            <p>"Cappadocia’s hot air balloons were the best experience of my life. Highly recommended!"</p>
+            <span>★★★★★</span>
+        </div>
+
+        <div class="testimonial-card">
+            <img src="https://i.pinimg.com/1200x/b4/f0/4d/b4f04de35a64a288d4a325ef3ca3be6e.jpg" alt="reviewer">
+            <h3>Sofia – Italy</h3>
+            <p>"The culture and kindness of Turkish people made my trip unforgettable."</p>
+            <span>★★★★★</span>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer>
+    <p>Made with ❤️ by Naimat Ashraf</p>
+</footer>
+
+<script src="script.js"></script>
+<script src="weather.js"></script>
+
+
+
+</body>
+</html>

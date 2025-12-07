@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Izmir – Explore Turkey</title>
+<style>
+
+/* ---------- GLOBAL ---------- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+/* ---------- HERO SECTION ---------- */
+header {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.hero-image.active {
+  opacity: 1;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  padding: 20px 40px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 2.8rem;
+  text-shadow: 0 0 20px black;
+}
+
+/* ---------- SECTION TITLES ---------- */
+.section-title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin: 50px 0 30px;
+  color: #b30000;
+  font-weight: 700;
+}
+
+/* ---------- ABOUT ---------- */
+.about {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* ---------- FOOD SECTION ---------- */
+.food-section {
+  padding: 60px 20px;
+}
+
+.food-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.food-card {
+  width: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.food-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.food-card h3 {
+  margin: 10px 0;
+  color: #b30000;
+}
+
+.food-card:hover {
+  transform: scale(1.05);
+}
+
+/* ---------- TIMELINE ---------- */
+.history-section {
+  padding: 60px 20px;
+  background: #fff5f5;
+}
+
+.timeline {
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+  padding-left: 20px;
+  border-left: 4px solid #b30000;
+}
+
+.timeline-item {
+  margin-bottom: 40px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+
+.timeline-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-home {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #b30000;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.back-home a:hover {
+  background-color: #ff1a1a;
+  transform: translateY(-3px);
+}
+
+
+
+
+.timeline-dot {
+  width: 18px;
+  height: 18px;
+  background: #b30000;
+  border-radius: 50%;
+  position: absolute;
+  left: -11px;
+  top: 5px;
+}
+
+.timeline-content {
+  background: white;
+  padding: 18px 22px;
+  border-radius: 10px;
+  border-left: 5px solid #b30000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ---------- MASONRY GRID ---------- */
+.masonry-section {
+  padding: 50px;
+  background: #fafafa;
+}
+
+.masonry-grid {
+  column-count: 3;
+  column-gap: 15px;
+}
+
+.grid-item {
+  margin-bottom: 15px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+  transition: transform 0.4s ease;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Different Sizes */
+.grid-item.small { height: 180px; }
+.grid-item.medium { height: 260px; }
+.grid-item.tall { height: 380px; }
+.grid-item.wide { height: 240px; }
+
+.grid-item:hover img {
+  transform: scale(1.1);
+}
+
+.grid-item:hover {
+  transform: translateY(-6px);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: #b30000;
+  color: #fff;
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+  font-size: 1rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .masonry-grid { column-count: 2; }
+  .food-grid { justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .masonry-grid { column-count: 1; }
+  .food-grid { flex-direction: column; align-items: center; }
+  .timeline-item { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header>
+  <img class="hero-image active"src="https://i.pinimg.com/736x/fd/68/bc/fd68bc513a79c10c97277e6a6ef80d6c.jpg" alt="Izmir Coast">
+  <img class="hero-image" src="https://i.pinimg.com/736x/65/2d/be/652dbe79590d1bb5bd2a801510d7dd14.jpg" alt="Izmir Old Town">
+  <img class="hero-image" src="https://i.pinimg.com/1200x/c7/75/54/c77554a34d0181e05837267907293aca.jpg" alt="Izmir Harbor">
+  <div class="hero-text">Welcome to Izmir – Pearl of Turkey’s Aegean</div>
+</header>
+
+<!-- ABOUT -->
+<section class="about">
+  <h2 class="section-title">About Izmir</h2>
+  <p>Izmir is a vibrant coastal city on the Aegean Sea, known for its lively bazaars, ancient ruins, modern seaside promenade, and rich cultural heritage.</p>
+</section>
+
+<!-- FOOD SECTION -->
+<section class="food-section">
+  <h2 class="section-title">Famous Foods in Izmir</h2>
+  <div class="food-grid">
+    <div class="food-card">
+      <img src="https://i.imgur.com/XjmrHk1.jpg" alt="Boyoz">
+      <h3>Boyoz</h3>
+    </div>
+    <div class="food-card">
+      <img src="https://i.imgur.com/hL8psBv.jpg" alt="Kumru Sandwich">
+      <h3>Kumru Sandwich</h3>
+    </div>
+    <div class="food-card">
+      <img src="https://i.imgur.com/mXk2n05.jpg" alt="Izmir Meatballs">
+      <h3>Izmir Meatballs</h3>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY TIMELINE -->
+<section class="history-section">
+  <h2 class="section-title">History of Izmir</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>3rd Century BC</h3>
+        <p>Izmir, ancient Smyrna, flourished as a port city under Greeks.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>133 BC</h3>
+        <p>Became part of the Roman Empire, thriving in trade and culture.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>14th Century</h3>
+        <p>Integrated into the Ottoman Empire, developing as a coastal hub.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>Present</h3>
+        <p>Modern Izmir is a cosmopolitan city famous for festivals, cuisine, and seaside life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MASONRY GRID -->
+<section class="masonry-section">
+  <h2 class="section-title">Discover Izmir in Pictures</h2>
+  <div class="masonry-grid">
+    <div class="grid-item tall"><img src="https://i.imgur.com/lz6mF7K.jpg" alt="Coastline"></div>
+    <div class="grid-item wide"><img src="https://i.imgur.com/9uKgVnK.jpg" alt="Clock Tower"></div>
+    <div class="grid-item small"><img src="https://i.imgur.com/9Kr9V4B.jpg" alt="Kordon"></div>
+    <div class="grid-item medium"><img src="https://i.imgur.com/Pa7X4tG.jpg" alt="Bazaar"></div>
+    <div class="grid-item tall"><img src="https://i.imgur.com/Mk6iI9A.jpg" alt="Ancient Ruins"></div>
+    <div class="grid-item wide"><img src="https://i.imgur.com/VCXPrVQ.jpg" alt="Harbor"></div>
+  </div>
+</section>
+
+<!-- BACK TO HOME BUTTON -->
+<div class="back-home">
+  <a href="index.html">← Back to Home</a>
+</div>
+
+<!-- ...after masonry grid and before footer -->
+<div class="back-home">
+  <a href="index.html">← Back to Home</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 Explore Turkey | Izmir Blog Page
+</footer>
+
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 Explore Turkey | Izmir Blog Page
+</footer>
+
+<script>
+// HERO SLIDER
+const heroImages = document.querySelectorAll(".hero-image");
+let index = 0;
+setInterval(() => {
+  heroImages.forEach(img => img.classList.remove("active"));
+  heroImages[index].classList.add("active");
+  index = (index + 1) % heroImages.length;
+}, 4000);
+
+// FOOD ANIMATION
+const foodCards = document.querySelectorAll(".food-card");
+function showFood() {
+  const trigger = window.innerHeight * 0.85;
+  foodCards.forEach(card => {
+    if(card.getBoundingClientRect().top < trigger) {
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    }
+  });
+}
+window.addEventListener("scroll", showFood);
+showFood();
+
+// TIMELINE ANIMATION
+const timelineItems = document.querySelectorAll(".timeline-item");
+function showTimeline() {
+  const trigger = window.innerHeight * 0.85;
+  timelineItems.forEach(item => {
+    if(item.getBoundingClientRect().top < trigger) item.classList.add("show");
+  });
+}
+window.addEventListener("scroll", showTimeline);
+showTimeline();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Istanbul - Turkey Travel Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background-color: #fefefe;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #eb1010;
+    }
+
+    header nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover {
+      color: #e01414;
+    }
+
+    .hero {
+      background-image: url('https://i.pinimg.com/1200x/84/34/38/843438525c8be0c24d0025974b5660f8.jpg'); /* Updated Istanbul image */
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 10px rgba(241, 13, 13, 0.6);
+    }
+
+    .hero p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      text-shadow: 1px 1px 8px rgba(238, 18, 18, 0.5);
+    }
+
+    .section {
+      padding: 50px;
+      max-width: 1200px;
+      margin: auto;
+      text-align: center; /* Center all content */
+    }
+
+    .section h2 {
+      color: #e31313;
+      margin-bottom: 25px;
+      font-size: 2rem;
+    }
+
+    .section p {
+      margin-bottom: 20px;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .attractions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      text-align: center;
+    }
+
+    .attraction-card {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+      border: 2px solid transparent;
+      text-align: center;
+    }
+
+    .attraction-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      border: 2px solid #e72312;
+    }
+
+    .attraction-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .attraction-card h3 {
+      padding: 15px;
+      color: #ec2214;
+    }
+
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 40px 50px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #e80a0a;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #ef1010;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #ed1010;
+    }
+
+    @media(max-width: 768px){
+      header {
+        flex-direction: column;
+      }
+
+      header nav {
+        margin-top: 15px;
+      }
+    }
+/* FAQ Section */
+.faq-section h2 {
+  margin-bottom: 30px;
+  color: #d40000; /* Red heading */
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: auto;
+  text-align: left;
+}
+
+.faq-item {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  transition: border 0.3s;
+}
+
+.faq-item.active {
+  border-color: #d40000; /* Red active border */
+}
+
+.faq-question {
+  width: 100%;
+  background: #fff;
+  padding: 18px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: color 0.3s, background 0.3s;
+}
+
+.faq-item:hover .faq-question {
+  color: #d40000; /* Red on hover */
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background: #fff4f4; /* Light red background */
+  transition: max-height 0.4s ease;
+  padding: 0 18px;
+}
+
+.faq-answer p {
+  padding: 15px 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+.arrow {
+  transition: transform 0.3s;
+  color: #d40000; /* Red arrow */
+}
+
+.faq-item.active .arrow {
+  transform: rotate(180deg);
+}
+
+/* ---------- HISTORY TIMELINE ---------- */
+
+.history-section {
+    padding: 60px 20px;
+    background: #fff5f5;
+}
+
+.history-section .section-title {
+    text-align: center;
+    font-size: 2.4rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+    color: #b30000;
+}
+
+.timeline {
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    padding-left: 20px;
+    border-left: 4px solid #b30000;
+}
+
+.timeline-item {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timeline-dot {
+    width: 18px;
+    height: 18px;
+    background: #b30000;
+    border-radius: 50%;
+    position: absolute;
+    left: -11px;
+    top: 5px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.timeline-content {
+    background: white;
+    padding: 18px 22px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-left: 5px solid #b30000;
+    transition: 0.3s;
+}
+
+.timeline-content:hover {
+    transform: scale(1.02);
+    background: #ffe8e8;
+}
+.timeline-item {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease-out;
+}
+
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ---------- FOOD SECTION ---------- */
+
+.food-section {
+    padding: 60px 20px;
+    background: #fff;
+}
+
+.food-section .section-title {
+    text-align: center;
+    font-size: 2.4rem;
+    margin-bottom: 40px;
+    color: #b30000;
+    font-weight: 700;
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.food-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+    text-align: center;
+    transition: 0.4s;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.food-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.food-card h3 {
+    margin: 15px 0 5px;
+    font-size: 1.4rem;
+    color: #b30000;
+}
+
+.food-card p {
+    padding: 0 15px 15px;
+    font-size: 0.95rem;
+}
+
+/* Hover Zoom */
+.food-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(255,0,0,0.25);
+}
+
+/* Animation when visible */
+.food-card.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.6s ease-out;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Turkey Blog</div>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../index.html#cities">Cities</a>
+      <a href="#">Culture</a>
+      <a href="#">Food</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div>
+      <h1>Istanbul</h1>
+      <p>The city that bridges Europe and Asia</p>
+    </div>
+  </section>
+
+  <!-- City Info Section -->
+  <section class="section">
+    <h2>About Istanbul</h2>
+    <p>Istanbul, Turkey’s largest city, spans two continents and is rich in history, culture, and architecture. From the majestic Hagia Sophia to the vibrant Grand Bazaar, Istanbul offers a unique blend of tradition and modernity. Visitors can enjoy delicious cuisine, historic landmarks, and breathtaking Bosphorus views in every corner of this incredible city.</p>
+  </section>
+
+<section id="history" class="history-section">
+    <h2 class="section-title">History of Istanbul</h2>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>660 BC – Foundation of Byzantium</h3>
+                <p>The ancient city of Byzantium was founded by Greek settlers, marking the beginning of Istanbul’s rich history.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>330 AD – Constantinople</h3>
+                <p>Roman Emperor Constantine the Great declared the city as the new capital of the Roman Empire.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>1453 – Ottoman Conquest</h3>
+                <p>Sultan Mehmed II conquered Constantinople, making it the capital of the Ottoman Empire.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>1923 – Part of Modern Türkiye</h3>
+                <p>After the fall of the Ottoman Empire, Istanbul became a major cultural and economic center of Türkiye.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+  <!-- Attractions Section -->
+  <section class="section">
+    <h2>Top Attractions</h2>
+    <div class="attractions">
+      <div class="attraction-card">
+        <img src="https://i.pinimg.com/1200x/9c/82/81/9c82813f9c3e2b9096205e9c00768794.jpg" alt="Hagia Sophia">
+        <h3>Hagia Sophia</h3>
+      </div>
+      <div class="attraction-card">
+        <img src="https://i.pinimg.com/736x/cd/c7/39/cdc7395e7b4fd80b1f8e8926487b9859.jpg" alt="Blue Mosque">
+        <h3>Blue Mosque</h3>
+      </div>
+      <div class="attraction-card">
+        <img src="https://i.pinimg.com/1200x/c9/00/2b/c9002bc1a78633edd991e3f757c81bc8.jpg" alt="Topkapi Palace">
+        <h3>Topkapi Palace</h3>
+      </div>
+      <div class="attraction-card">
+        <img src="https://i.pinimg.com/736x/e1/26/c4/e126c434ad3885c4b66d02664988d1ab.jpg" alt="Grand Bazaar">
+        <h3>Grand Bazaar</h3>
+      </div>
+      
+    </div>
+
+    <a class="back-btn" href="../index.html">← Back to Turkey Blog</a>
+  </section>
+
+<!-- FAQ Section -->
+<section class="section faq-section">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-container">
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What is the best time to visit this city?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p>The best time to visit is during spring (April–June) and autumn (September–November) when the weather is pleasant and perfect for sightseeing.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Which area is best for tourists to stay?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p>Popular areas include the city center, near historical landmarks, or along the coastline for beautiful views and easy transportation access.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What are the top local foods to try?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p>You must try local Turkish cuisine such as kebabs, baklava, simit, and traditional tea. Each city has its own specialties.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Is transportation easy in this city?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes! The city offers buses, metros, trams, ferries, and taxis, making it simple for tourists to travel comfortably.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Turkey Travel Blog. All rights reserved.</p>
+    <p>
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">Twitter</a>
+    </p>
+  </footer>
+ <script>
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+      const btn = item.querySelector(".faq-question");
+
+      btn.addEventListener("click", () => {
+        const isOpen = item.classList.contains("active");
+
+        faqItems.forEach((i) => {
+          i.classList.remove("active");
+          i.querySelector(".faq-answer").style.maxHeight = null;
+        });
+
+        if (!isOpen) {
+          item.classList.add("active");
+          item.querySelector(".faq-answer").style.maxHeight =
+            item.querySelector(".faq-answer").scrollHeight + "px";
+        }
+      });
+    });
+
+
+// -------- Timeline Scroll Animation ----------
+const timelineItems = document.querySelectorAll(".timeline-item");
+
+const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    timelineItems.forEach(item => {
+        const boxTop = item.getBoundingClientRect().top;
+
+        if (boxTop < triggerBottom) {
+            item.classList.add("show");
+        }
+    });
+};
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+// ---------- Food Card Animation ----------
+const foodCards = document.querySelectorAll(".food-card");
+
+function showFoodCards() {
+    const triggerPoint = window.innerHeight * 0.85;
+
+    foodCards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+
+        if (cardTop < triggerPoint) {
+            card.classList.add("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", showFoodCards);
+showFoodCards();
+
+
+
+  </script>
+
+ 
+
+</body>
+</html>
